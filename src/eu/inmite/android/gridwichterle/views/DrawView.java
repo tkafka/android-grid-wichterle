@@ -67,6 +67,35 @@ public class DrawView extends View {
 			gap = gap + mSquare;
 		}
 
+		// add 48, 56 dp horizontal lines, assuming 8dp square it's 6, 7
+		List<Float> hotizontalLines = new LinkedList<Float>();
+		hotizontalLines.add(6);
+		hotizontalLines.add(7);
+
+		for (int i = 0; i < hotizontalLines.size(); i++) {
+			float y = mSquare * hotizontalLines.get(i);
+			gridPoints.add(0f);
+			gridPoints.add(y);
+			gridPoints.add((float) width);
+			gridPoints.add(y);
+		}
+
+		// add 16, 48, 56, 72 dp vertical lines, assuming 8dp square it's 2, 6, 7, 9
+		List<Float> verticalLines = new LinkedList<Float>();
+		verticalLines.add(2);
+		verticalLines.add(6);
+		verticalLines.add(7);
+		verticalLines.add(9);
+		verticalLines.add(countVerticalLines - 2);
+
+		for (int i = 0; i < verticalLines.size(); i++) {
+			float x = mSquare * verticalLines.get(i);
+			gridPoints.add(x);
+			gridPoints.add(0f);
+			gridPoints.add(x);
+			gridPoints.add((float) height);
+		}
+
 		points = new float[gridPoints.size()];
 		for (int i = 0; i < gridPoints.size(); i++) {
 			points[i] = gridPoints.get(i);
